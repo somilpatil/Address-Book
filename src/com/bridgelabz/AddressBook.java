@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class AddressBook {
 	static Scanner sc = new Scanner(System.in);
 	static List<Contact> list = new LinkedList<Contact>();
-
+	private static AddressBook editcontact;
+	
 	//Created method for adding contact
 	public static void addContact(){
 		System.out.println("Enter your firstName : ");
@@ -29,20 +30,30 @@ public class AddressBook {
 		Contact obj = new Contact(firstName, lastName, address, city, state, zip, phoneNo, email);
 		list.add(obj);
 	}
+	public static void editContact(){
+		//Scanner sc = new Scanner(System.in);
+		System.out.println("Enter first name: ");
+		String firstName = sc.nextLine();
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getFirstName().equalsIgnoreCase(firstName)){
+				list.remove(i);
+				addContact();
+	        }
+			else {
+	                System.out.println("No data found in Address Book");
+	        }
+		}
+	}
 	public static void main(String[] args) {
-		AddressBook addressBook = new AddressBook();
+
+		AddressBook editcontact = new AddressBook();
 		//Displaying the welcome message
 		System.out.println("WELCOME TO ADDRESS BOOK PROBLEM");
 		//Adding new contact
 		System.out.println("Enter details of new contact");
-		
-		//Creating contact and adding new contact details to the list
-		int count = 1;
-		while (count == 1) {
-			addContact();
-			count--;
-		}
-
+		addContact();
+		//Editing Contact
+		editContact();
 		System.out.println(list); //printing list
 	}
 }
