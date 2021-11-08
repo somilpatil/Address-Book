@@ -9,7 +9,7 @@ public class AddressBook {
 	static List<Contact> list = new LinkedList<Contact>();
 
 	//Created method for adding contact
-	public static void addContact() {
+	public static void addContact(){
 		System.out.println("Enter your firstName : ");
 		String firstName = sc.nextLine();
 		System.out.println("Enter your lastName : ");
@@ -29,10 +29,20 @@ public class AddressBook {
 		Contact obj = new Contact(firstName, lastName, address, city, state, zip, phoneNo, email);
 		list.add(obj);
 	}
-
 	public static void main(String[] args) {
-		//Creating contact
-		addContact();
+		AddressBook addressBook = new AddressBook();
+		//Displaying the welcome message
+		System.out.println("WELCOME TO ADDRESS BOOK PROBLEM");
+		//Adding new contact
+		System.out.println("Enter details of new contact");
+		
+		//Creating contact and adding new contact details to the list
+		int count = 1;
+		while (count == 1) {
+			addContact();
+			count--;
+		}
+
 		System.out.println(list); //printing list
 	}
 }
